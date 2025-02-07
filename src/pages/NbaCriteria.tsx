@@ -9,39 +9,49 @@ const NbaCriteria = () => {
   const criteria = [
     {
       number: 1,
-      title: "Institutional Mission, Vision and Programme Educational Objectives"
+      title: "Institutional Mission, Vision and Programme Educational Objectives",
+      marks: 100
     },
     {
       number: 2,
-      title: "Programme Outcome"
+      title: "Programme Outcome",
+      marks: 100
     },
     {
       number: 3,
-      title: "Programme Curriculum"
+      title: "Programme Curriculum",
+      marks: 100
     },
     {
       number: 4,
-      title: "Students' Performance"
+      title: "Students' Performance",
+      marks: 100,
+      route: "/criteria-four"
     },
     {
       number: 5,
-      title: "Faculty Contributions"
+      title: "Faculty Contributions",
+      marks: 100
     },
     {
       number: 6,
-      title: "Facilities and Technical Support"
+      title: "Facilities and Technical Support",
+      marks: 100
     },
     {
       number: 7,
-      title: "Academic Support Units and Teaching-Learning Process"
+      title: "Academic Support Units and Teaching-Learning Process",
+      marks: 100
     },
     {
       number: 8,
-      title: "Governance, Institutional Support and Financial Resources"
+      title: "Governance, Institutional Support and Financial Resources",
+      marks: 100
     },
     {
       number: 9,
-      title: "Continuous Improvement in Attainment of Outcomes"
+      title: "Continuous Improvement in Attainment of Outcomes",
+      marks: 100
     }
   ];
 
@@ -65,14 +75,20 @@ const NbaCriteria = () => {
             <Card
               key={criterion.number}
               className="p-6 hover:shadow-lg transition-shadow cursor-pointer bg-white"
+              onClick={() => criterion.route && navigate(criterion.route)}
             >
-              <div className="flex items-start gap-4">
-                <div className="bg-[#02959F] text-white w-12 h-12 flex items-center justify-center rounded-full shrink-0">
-                  {criterion.number}
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-[#02959F] text-white w-12 h-12 flex items-center justify-center rounded-full shrink-0">
+                    {criterion.number}
+                  </div>
+                  <h2 className="text-xl font-semibold text-[#02959F]">
+                    {criterion.title}
+                  </h2>
                 </div>
-                <h2 className="text-xl font-semibold text-[#02959F]">
-                  {criterion.title}
-                </h2>
+                <div className="text-lg font-semibold text-[#02959F]">
+                  {criterion.marks} marks
+                </div>
               </div>
             </Card>
           ))}
