@@ -2,12 +2,14 @@
 import { useState } from "react";
 import { User, Lock } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ const LoginForm = () => {
       title: "Success",
       description: "Login successful!",
     });
+    navigate("/dashboard");
   };
 
   return (
