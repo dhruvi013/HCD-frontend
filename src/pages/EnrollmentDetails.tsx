@@ -102,6 +102,7 @@ const EnrollmentDetails = () => {
                   <SelectItem value="academic">Academic Year Wise</SelectItem>
                   <SelectItem value="enrollment">Enrollment No. Wise</SelectItem>
                   <SelectItem value="name">Name Wise</SelectItem>
+                  <SelectItem value="gr">GR No. Wise</SelectItem>
                 </SelectContent>
               </Select>
 
@@ -118,11 +119,17 @@ const EnrollmentDetails = () => {
                 </Select>
               )}
 
-              {(filterType === "enrollment" || filterType === "name") && (
+              {(filterType === "enrollment" || filterType === "name" || filterType === "gr") && (
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
                   <Input
-                    placeholder={filterType === "enrollment" ? "Search by enrollment number" : "Search by name"}
+                    placeholder={
+                      filterType === "enrollment" 
+                        ? "Search by enrollment number" 
+                        : filterType === "name"
+                        ? "Search by name"
+                        : "Search by GR number"
+                    }
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="pl-10 w-[300px]"
@@ -135,10 +142,12 @@ const EnrollmentDetails = () => {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead>GR No.</TableHead>
                 <TableHead>Enrollment Number</TableHead>
                 <TableHead>Name</TableHead>
                 <TableHead>Academic Year</TableHead>
-                <TableHead>Date of Admission</TableHead>
+                <TableHead>Registration Form</TableHead>
+                <TableHead>10th Marksheet</TableHead>
                 <TableHead>12th Marksheet</TableHead>
               </TableRow>
             </TableHeader>
