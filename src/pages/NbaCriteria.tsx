@@ -69,7 +69,7 @@ const NbaCriteria = () => {
         </h1>
       </div>
 
-      <div className="container mx-auto px-4 pb-8">
+      <div className="w-[80%] mx-auto px-4 pb-8">
         <div className="space-y-4">
           {criteria.map((criterion) => (
             <Card
@@ -86,7 +86,7 @@ const NbaCriteria = () => {
                     {criterion.title}
                   </h2>
                 </div>
-                <div className="text-lg font-semibold text-[#02959F]">
+                <div className="text-lg font-semibold text-[#02959F] whitespace-nowrap">
                   {criterion.marks} marks
                 </div>
               </div>

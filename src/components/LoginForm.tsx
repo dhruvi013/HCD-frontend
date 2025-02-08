@@ -33,14 +33,14 @@ const LoginForm = () => {
     <div className="min-h-screen bg-gray-50">
       <div className="bg-[#02959F] py-6 mb-8">
         <h1 className="text-white text-4xl font-bold text-center tracking-wider animate-fadeIn">
-          MAMS
+          Marwadi University Accreditation and Data Management System
         </h1>
       </div>
       
       <div className="max-w-md mx-auto px-6">
         <div className="bg-white rounded-lg shadow-xl p-8">
           <h2 className="text-2xl font-semibold text-[#02959F] mb-6 text-center">
-            Welcome Back
+            Sign-in
           </h2>
           
           <form onSubmit={handleSubmit} className="space-y-6">
