@@ -21,13 +21,13 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Show loading screen for 2 seconds after login
+    // Show loading screen for 1 second after login
     const path = window.location.pathname;
     if (path === "/dashboard") {
       setIsLoading(true);
       const timer = setTimeout(() => {
         setIsLoading(false);
-      }, 2000);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, []);
