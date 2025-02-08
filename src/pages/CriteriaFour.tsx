@@ -1,7 +1,7 @@
 
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Eye, Edit } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CriteriaFour = () => {
@@ -79,10 +79,10 @@ const CriteriaFour = () => {
         </h1>
       </div>
 
-      <div className="container mx-auto px-4 pb-8">
+      <div className="container mx-auto px-4 pb-8 w-[80%]">
         <div className="space-y-6">
           {subCriteria.map((criterion) => (
-            <Card key={criterion.number} className="p-6 bg-white">
+            <Card key={criterion.number} className="p-6 bg-white hover:shadow-lg transition-all duration-300">
               <div className="space-y-4">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
@@ -90,17 +90,25 @@ const CriteriaFour = () => {
                       <h2 className="text-xl font-semibold text-[#02959F]">
                         {criterion.number} - {criterion.title}
                       </h2>
-                      {criterion.details && (
+                      <div className="flex gap-2 ml-4">
                         <Button 
                           variant="outline" 
                           size="sm"
-                          className="ml-2"
-                          onClick={() => navigate(`/${criterion.details}`)}
+                          className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
+                          onClick={() => navigate(`/${criterion.details || '#'}`)}
                         >
+                          <Eye className="h-4 w-4" />
                           See Details
-                          <ExternalLink className="ml-2 h-4 w-4" />
                         </Button>
-                      )}
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
+                        >
+                          <Edit className="h-4 w-4" />
+                          Edit Marks
+                        </Button>
+                      </div>
                     </div>
                   </div>
                   <div className="text-lg font-semibold text-[#02959F] whitespace-nowrap">
@@ -111,11 +119,29 @@ const CriteriaFour = () => {
                 {criterion.subCriteria && (
                   <div className="ml-8 space-y-3">
                     {criterion.subCriteria.map((sub) => (
-                      <div key={sub.number} className="flex items-start justify-between gap-4 p-3 bg-gray-50 rounded-lg">
-                        <div>
+                      <div key={sub.number} className="flex items-start justify-between gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div className="flex-1">
                           <h3 className="text-lg font-medium text-[#02959F]">
                             {sub.number} - {sub.title}
                           </h3>
+                          <div className="flex gap-2 mt-2">
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
+                            >
+                              <Eye className="h-4 w-4" />
+                              See Details
+                            </Button>
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
+                            >
+                              <Edit className="h-4 w-4" />
+                              Edit Marks
+                            </Button>
+                          </div>
                         </div>
                         <div className="text-lg font-semibold text-[#02959F] whitespace-nowrap">
                           {sub.marks} marks

@@ -1,9 +1,14 @@
 
 import { useNavigate } from "react-router-dom";
-import { Home, Mail, Phone } from "lucide-react";
+import { Home, Mail, Phone, LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  
+  const handleSignOut = () => {
+    navigate('/');
+  };
   
   return (
     <nav className="bg-white shadow-md">
@@ -11,13 +16,13 @@ const Navbar = () => {
         <div className="flex h-20 items-center justify-between">
           <div className="flex items-center gap-4">
             <img 
-              src="/lovable-uploads/90333e88-9052-4b6b-af53-e3f2f477e9b1.png" 
-              alt="Marwadi University Logo" 
+              src="/lovable-uploads/0adc9f10-1395-42c0-9322-05c0c273267a.png" 
+              alt="MADMS Logo" 
               className="h-12 w-auto cursor-pointer"
               onClick={() => navigate('/')}
             />
             <h1 className="text-[#02959F] text-2xl font-semibold tracking-wider">
-              Marwadi University
+              MADMS
             </h1>
           </div>
           
@@ -31,6 +36,14 @@ const Navbar = () => {
             <a href="tel:+911234567890" className="text-gray-600 hover:text-[#02959F] transition-colors">
               <Phone className="h-5 w-5" />
             </a>
+            <Button
+              variant="outline"
+              className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
+              onClick={handleSignOut}
+            >
+              <LogOut className="h-4 w-4" />
+              Sign Out
+            </Button>
           </div>
         </div>
       </div>
