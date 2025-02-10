@@ -6,11 +6,30 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const cards = [
-    { title: "NBA", route: "/nba-criteria" },
-    { title: "NAAC", route: "#" },
-    { title: "COE", description: "Centre of Excellence", route: "#" },
-    { title: "NIRF", route: "#" },
-    { title: "QS", route: "#" }
+    { 
+      title: "NBA", 
+      description: "National Board of Accreditation",
+      route: "/nba-criteria" 
+    },
+    { 
+      title: "NAAC", 
+      description: "National Assessment and Accreditation Council",
+      route: "#" 
+    },
+    { 
+      title: "COE", 
+      description: "Centre of Excellence", 
+      route: "#" 
+    },
+    { 
+      title: "NIRF", 
+      description: "National Institutional Ranking Framework",
+      route: "#" 
+    },
+    { 
+      title: "QS", 
+      route: "#" 
+    }
   ];
 
   return (
@@ -33,7 +52,7 @@ const Dashboard = () => {
                 {card.title}
               </h2>
               {card.description && (
-                <p className="text-gray-600">{card.description}</p>
+                <p className="text-gray-600 text-sm">{card.description}</p>
               )}
             </Card>
           ))}
