@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import LoadingScreen from "./components/LoadingScreen";
 import Index from "./pages/Index";
+import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import NbaCriteria from "./pages/NbaCriteria";
 import CriteriaFour from "./pages/CriteriaFour";
@@ -47,6 +48,7 @@ const App = () => {
             <main className="flex-1">
               <Routes>
                 <Route path="/" element={<Index />} />
+                <Route path="/register" element={<Register />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/nba-criteria" element={<NbaCriteria />} />
                 <Route path="/criteria-four" element={<CriteriaFour />} />

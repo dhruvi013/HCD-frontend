@@ -15,12 +15,6 @@ const Navbar = () => {
       <div className="mx-auto w-[80%] px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
           <div className="flex items-center gap-4">
-            <img 
-              src="/lovable-uploads/0adc9f10-1395-42c0-9322-05c0c273267a.png" 
-              alt="MADMS Logo" 
-              className="h-12 w-auto cursor-pointer"
-              onClick={() => navigate('/')}
-            />
             <h1 className="text-[#02959F] text-2xl font-semibold tracking-wider">
               MADMS
             </h1>
