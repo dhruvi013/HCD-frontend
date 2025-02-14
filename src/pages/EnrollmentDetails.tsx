@@ -1,7 +1,8 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Search } from "lucide-react";
+import { ArrowLeft, Search, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -94,6 +95,13 @@ const EnrollmentDetails = () => {
               Student Details
             </h2>
             <div className="flex items-center gap-4">
+              <Button
+                onClick={() => navigate("/upload-documents")}
+                className="bg-[#02959F] text-white hover:bg-[#037885] flex items-center gap-2"
+              >
+                <Plus className="h-4 w-4" />
+                Add Details
+              </Button>
               <Select onValueChange={setFilterType}>
                 <SelectTrigger className="w-[200px]">
                   <SelectValue placeholder="Select filter type" />

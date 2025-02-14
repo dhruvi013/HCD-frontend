@@ -14,6 +14,7 @@ import Dashboard from "./pages/Dashboard";
 import NbaCriteria from "./pages/NbaCriteria";
 import CriteriaFour from "./pages/CriteriaFour";
 import EnrollmentDetails from "./pages/EnrollmentDetails";
+import UploadDocuments from "./pages/UploadDocuments";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -53,6 +54,7 @@ const App = () => {
                 <Route path="/nba-criteria" element={<NbaCriteria />} />
                 <Route path="/criteria-four" element={<CriteriaFour />} />
                 <Route path="/enrollment-details" element={<EnrollmentDetails />} />
+                <Route path="/upload-documents" element={<UploadDocuments />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
