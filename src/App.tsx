@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,6 +17,9 @@ import UploadDocuments from "./pages/UploadDocuments";
 import SuccessRate from "./pages/SuccessRate";
 import SuccessRateUpload from "./pages/SuccessRateUpload";
 import NotFound from "./pages/NotFound";
+import SuccessRateNoBacklog from "./pages/SuccessRateNoBacklog";
+import SuccessRateWithBacklog from "./pages/SuccessRateWithBacklog";
+import AcademicPerformance from "./pages/AcademicPerformance";
 
 const queryClient = new QueryClient();
 
@@ -25,7 +27,6 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    // Show loading screen for 1 second after login
     const path = window.location.pathname;
     if (path === "/dashboard") {
       setIsLoading(true);
@@ -59,6 +60,9 @@ const App = () => {
                 <Route path="/upload-documents" element={<UploadDocuments />} />
                 <Route path="/success-rate" element={<SuccessRate />} />
                 <Route path="/success-rate-upload" element={<SuccessRateUpload />} />
+                <Route path="/success-rate-no-backlog" element={<SuccessRateNoBacklog />} />
+                <Route path="/success-rate-with-backlog" element={<SuccessRateWithBacklog />} />
+                <Route path="/academic-performance" element={<AcademicPerformance />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

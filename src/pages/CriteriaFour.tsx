@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -31,23 +30,27 @@ const CriteriaFour = () => {
       number: "4.2",
       title: "Success Rate in Stipulated Period of the Program",
       marks: 20,
+      details: "success-rate",
       subCriteria: [
         {
           number: "4.2.1",
           title: "Success Rate without Any Backlogs in Any Semester/Year of Study",
-          marks: 15
+          marks: 15,
+          details: "success-rate-no-backlog"
         },
         {
           number: "4.2.2",
           title: "Success Rate in Stipulated Period (with backlogs + without backlogs)",
-          marks: 5
+          marks: 5,
+          details: "success-rate-with-backlog"
         }
       ]
     },
     {
       number: "4.3",
       title: "Academic Performance in Second Year",
-      marks: 10
+      marks: 10,
+      details: "academic-performance"
     },
     {
       number: "4.4",
