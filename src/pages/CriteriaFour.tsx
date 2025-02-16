@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -208,15 +209,17 @@ const CriteriaFour = () => {
                           {criterion.number} - {criterion.title}
                         </h2>
                         <div className="flex gap-2 ml-4">
-                          <Button 
-                            variant="outline" 
-                            size="sm"
-                            className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
-                            onClick={() => navigate(`/${criterion.details || '#'}`)}
-                          >
-                            <Eye className="h-4 w-4" />
-                            See Details
-                          </Button>
+                          {criterion.details && (
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
+                              onClick={() => navigate(`/${criterion.details}`)}
+                            >
+                              <Eye className="h-4 w-4" />
+                              See Details
+                            </Button>
+                          )}
                           <Button 
                             variant="outline" 
                             size="sm"
@@ -242,14 +245,17 @@ const CriteriaFour = () => {
                               {sub.number} - {sub.title}
                             </h3>
                             <div className="flex gap-2 mt-2">
-                              <Button 
-                                variant="outline" 
-                                size="sm"
-                                className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
-                              >
-                                <Eye className="h-4 w-4" />
-                                See Details
-                              </Button>
+                              {sub.details && (
+                                <Button 
+                                  variant="outline" 
+                                  size="sm"
+                                  className="flex items-center gap-2 text-[#02959F] hover:text-white hover:bg-[#02959F]"
+                                  onClick={() => navigate(`/${sub.details}`)}
+                                >
+                                  <Eye className="h-4 w-4" />
+                                  See Details
+                                </Button>
+                              )}
                               <Button 
                                 variant="outline" 
                                 size="sm"
