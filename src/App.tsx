@@ -20,6 +20,7 @@ import NotFound from "./pages/NotFound";
 import SuccessRateNoBacklog from "./pages/SuccessRateNoBacklog";
 import SuccessRateWithBacklog from "./pages/SuccessRateWithBacklog";
 import AcademicPerformance from "./pages/AcademicPerformance";
+import AcademicPerformanceUpload from "./pages/AcademicPerformanceUpload";
 
 const queryClient = new QueryClient();
 
@@ -63,6 +64,7 @@ const App = () => {
                 <Route path="/success-rate-no-backlog" element={<SuccessRateNoBacklog />} />
                 <Route path="/success-rate-with-backlog" element={<SuccessRateWithBacklog />} />
                 <Route path="/academic-performance" element={<AcademicPerformance />} />
+                <Route path="/academic-performance-upload" element={<AcademicPerformanceUpload />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, Plus, Search } from "lucide-react";
@@ -67,6 +66,16 @@ const AcademicPerformance = () => {
 
       <div className="container mx-auto px-[20%] pb-8">
         <Card className="p-6 mb-8">
+          <div className="flex justify-end mb-6">
+            <Button
+              onClick={() => navigate("/academic-performance-upload")}
+              className="bg-[#02959F] text-white hover:bg-[#037885] flex items-center gap-2"
+            >
+              <Plus className="h-4 w-4" />
+              Add Details
+            </Button>
+          </div>
+
           <Table>
             <TableHeader>
               <TableRow>
@@ -101,13 +110,6 @@ const AcademicPerformance = () => {
               Student Details
             </h2>
             <div className="flex items-center gap-4">
-              <Button
-                onClick={() => navigate("/academic-performance-upload")}
-                className="bg-[#02959F] text-white hover:bg-[#037885] flex items-center gap-2"
-              >
-                <Plus className="h-4 w-4" />
-                Add Details
-              </Button>
               <Select onValueChange={setFilterType}>
                 <SelectTrigger className="w-[200px]">
                   <SelectValue placeholder="Select filter type" />
@@ -159,13 +161,13 @@ const AcademicPerformance = () => {
                 <TableHead>GR No.</TableHead>
                 <TableHead>Enrollment Number</TableHead>
                 <TableHead>Name</TableHead>
-                <TableHead>Academic Year</TableHead>
-                <TableHead>CGPA</TableHead>
+                <TableHead>Grade (CGPA)</TableHead>
                 <TableHead>Appeared for Exam</TableHead>
+                <TableHead>Academic Year</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {/* Will be populated with actual data when connected to backend */}
+              {/* Table will be populated with actual data when integrated with backend */}
             </TableBody>
           </Table>
         </Card>
