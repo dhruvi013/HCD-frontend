@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
@@ -32,20 +31,6 @@ const CriteriaFour = () => {
       title: "Success Rate in Stipulated Period of the Program",
       marks: 20,
       details: "success-rate",
-      subCriteria: [
-        {
-          number: "4.2.1",
-          title: "Success Rate without Any Backlogs in Any Semester/Year of Study",
-          marks: 15,
-          details: "success-rate-no-backlog"
-        },
-        {
-          number: "4.2.2",
-          title: "Success Rate in Stipulated Period (with backlogs + without backlogs)",
-          marks: 5,
-          details: "success-rate-with-backlog"
-        }
-      ]
     },
     {
       number: "4.3",
@@ -56,27 +41,32 @@ const CriteriaFour = () => {
     {
       number: "4.4",
       title: "Placement, Higher Studies and Entrepreneurship",
-      marks: 30
+      marks: 30,
+      details: "placement-details"
     },
     {
       number: "4.5",
       title: "Professional Activities",
       marks: 20,
+      details: "professional-activities",
       subCriteria: [
         {
           number: "4.5.1",
           title: "Professional Societies/Chapters and Organizing Engineering Events",
-          marks: 5
+          marks: 5,
+          details: "professional-societies"
         },
         {
           number: "4.5.2",
           title: "Publication of Technical Magazines and Newsletter",
-          marks: 5
+          marks: 5,
+          details: "publications"
         },
         {
           number: "4.5.3",
           title: "Participation at Inter-Institution Events by Students of Program of Study",
-          marks: 10
+          marks: 10,
+          details: "inter-institution-events"
         }
       ]
     }

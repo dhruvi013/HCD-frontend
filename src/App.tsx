@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -16,11 +17,12 @@ import EnrollmentDetails from "./pages/EnrollmentDetails";
 import UploadDocuments from "./pages/UploadDocuments";
 import SuccessRate from "./pages/SuccessRate";
 import SuccessRateUpload from "./pages/SuccessRateUpload";
-import NotFound from "./pages/NotFound";
 import SuccessRateNoBacklog from "./pages/SuccessRateNoBacklog";
 import SuccessRateWithBacklog from "./pages/SuccessRateWithBacklog";
 import AcademicPerformance from "./pages/AcademicPerformance";
 import AcademicPerformanceUpload from "./pages/AcademicPerformanceUpload";
+import PlacementDetails from "./pages/PlacementDetails";
+import PlacementDetailsUpload from "./pages/PlacementDetailsUpload";
 
 const queryClient = new QueryClient();
 
@@ -65,6 +67,8 @@ const App = () => {
                 <Route path="/success-rate-with-backlog" element={<SuccessRateWithBacklog />} />
                 <Route path="/academic-performance" element={<AcademicPerformance />} />
                 <Route path="/academic-performance-upload" element={<AcademicPerformanceUpload />} />
+                <Route path="/placement-details" element={<PlacementDetails />} />
+                <Route path="/placement-details-upload" element={<PlacementDetailsUpload />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
