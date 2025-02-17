@@ -15,9 +15,9 @@ const SuccessRateUpload = () => {
   const { toast } = useToast();
   const [selectedEnrollment, setSelectedEnrollment] = useState("");
   const [gradeHistory, setGradeHistory] = useState<File | null>(null);
-  const [hasBacklog, setHasBacklog] = useState<"yes" | "no" | "">("");
+  const [appearedForExam, setAppearedForExam] = useState<"yes" | "no" | "">("");
 
-  // Dummy enrollment numbers
+  // Dummy enrollment numbers (will be fetched from backend later)
   const enrollmentNumbers = [
     "21012011001",
     "21012011002",
@@ -47,10 +47,10 @@ const SuccessRateUpload = () => {
       return;
     }
 
-    if (!hasBacklog) {
+    if (!appearedForExam) {
       toast({
         title: "Error",
-        description: "Please select backlog status",
+        description: "Please select whether student appeared for exam",
         variant: "destructive",
       });
       return;
@@ -117,10 +117,10 @@ const SuccessRateUpload = () => {
               </div>
 
               <div className="space-y-2">
-                <Label>Does student have backlog?</Label>
+                <Label>Has student appeared for exam?</Label>
                 <RadioGroup
-                  value={hasBacklog}
-                  onValueChange={(value) => setHasBacklog(value as "yes" | "no")}
+                  value={appearedForExam}
+                  onValueChange={(value) => setAppearedForExam(value as "yes" | "no")}
                   className="flex gap-4"
                 >
                   <div className="flex items-center space-x-2">
