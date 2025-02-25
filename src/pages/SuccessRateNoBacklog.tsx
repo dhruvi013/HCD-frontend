@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Plus, Search } from "lucide-react";
+import { ArrowLeft, Plus, Search, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -12,9 +11,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Card } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 
 const SuccessRateNoBacklog = () => {
   const navigate = useNavigate();
+  const [studentData, setStudentData] = useState([]);
+  const [filterType, setFilterType] = useState("");
+  const [academicYear, setAcademicYear] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const tableData = [
     {
@@ -53,6 +64,7 @@ const SuccessRateNoBacklog = () => {
 
       <div className="container mx-auto px-[20%] pb-8">
         <Card className="p-6 mb-8">
+          <h2 className="text-xl font-semibold text-[#02959F] mb-4">Student Success Rates without Backlogs</h2>
           <Table>
             <TableHeader>
               <TableRow>
@@ -82,6 +94,69 @@ const SuccessRateNoBacklog = () => {
             </TableBody>
           </Table>
         </Card>
+
+        {/* Search and Filter Section */}
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-xl font-semibold text-[#02959F]">Student Details</h2>
+            <div className="flex items-center gap-4">
+              <Select value={filterType} onValueChange={setFilterType}>
+                <SelectTrigger className="w-64">
+                  <SelectValue placeholder="Select filter type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="gr_no">GR No.</SelectItem>
+                  <SelectItem value="enrollment">Enrollment Number</SelectItem>
+                  <SelectItem value="name">Name</SelectItem>
+                  <SelectItem value="grade">Grade (CGPA)</SelectItem>
+                  <SelectItem value="exam">Appeared for Exam</SelectItem>
+                  <SelectItem value="academic_year">Academic Year</SelectItem>
+                </SelectContent>
+              </Select>
+              <Input
+                type="search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search"
+                className="w-64"
+              />
+              <Button variant="default" className="bg-[#02959F]">
+                <Search className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Enrollment Number</TableHead>
+                <TableHead>Grade History</TableHead>
+                <TableHead>Backlog</TableHead>
+                <TableHead>Backlog Semesters</TableHead>
+                <TableHead>Actions</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {studentData.map((student, index) => (
+                <TableRow key={index}>
+                  <TableCell>{student.enrollmentNumber}</TableCell>
+                  <TableCell>
+                    <Button variant="link">
+                      View PDF
+                    </Button>
+                  </TableCell>
+                  <TableCell>{student.backlog}</TableCell>
+                  <TableCell>{student.backlogSems?.join(', ') || '-'}</TableCell>
+                  <TableCell>
+                    <Button variant="ghost" size="sm">
+                      <Eye className="h-4 w-4" />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   );

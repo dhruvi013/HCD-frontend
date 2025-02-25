@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Plus } from "lucide-react";
+import { ArrowLeft, Search, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Table,
@@ -11,35 +10,39 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Card } from "@/components/ui/card";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 
 const PlacementDetails = () => {
   const navigate = useNavigate();
+  const [filterType, setFilterType] = useState("");
+  const [academicYear, setAcademicYear] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const tableData = [
+  const placementData = [
     {
-      year: "CAYm1 (2023-24)",
-      totalStudents: 49,
-      placed: 37,
-      higherStudies: 6,
-      entrepreneur: 3,
-      placementIndex: 46
+      year: "2024-25 (CAY)",
+      totalStudents: 60,
+      placedStudents: 45,
+      percentage: "75%"
     },
     {
-      year: "CAYm2 (2022-23)",
-      totalStudents: 48,
-      placed: 31,
-      higherStudies: 8,
-      entrepreneur: 7,
-      placementIndex: 46
+      year: "2023-24 (CAYm1)",
+      totalStudents: 58,
+      placedStudents: 40,
+      percentage: "69%"
     },
     {
-      year: "CAYm3 (2021-22)",
-      totalStudents: 42,
-      placed: 34,
-      higherStudies: 2,
-      entrepreneur: 5,
-      placementIndex: 41
+      year: "2022-23 (CAYm2)",
+      totalStudents: 55,
+      placedStudents: 38,
+      percentage: "69%"
     }
   ];
 
@@ -53,68 +56,109 @@ const PlacementDetails = () => {
           <ArrowLeft size={24} />
         </button>
         <h1 className="text-white text-4xl font-bold text-center tracking-wider">
-          Placement Details
+          4.5.1 Placement Details
         </h1>
       </div>
 
       <div className="container mx-auto px-[20%] pb-8">
-        <Card className="p-6 mb-8">
-          <div className="flex justify-end mb-6">
-            <Button
-              onClick={() => navigate("/placement-details-upload")}
-              className="bg-[#02959F] text-white hover:bg-[#037885] flex items-center gap-2"
-            >
-              <Plus className="h-4 w-4" />
-              Add Details
-            </Button>
+        <div className="bg-white rounded-lg shadow p-6 mb-8">
+          <h2 className="text-2xl font-semibold text-[#02959F] mb-6">
+            Placement Statistics
+          </h2>
+          
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Academic Year</TableHead>
+                <TableHead>Total Number of Students</TableHead>
+                <TableHead>Number of Placed Students</TableHead>
+                <TableHead>Placement Percentage</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {placementData.map((row) => (
+                <TableRow key={row.year}>
+                  <TableCell className="font-medium">{row.year}</TableCell>
+                  <TableCell>{row.totalStudents}</TableCell>
+                  <TableCell>{row.placedStudents}</TableCell>
+                  <TableCell>{row.percentage}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-semibold text-[#02959F]">
+              Student Placement Details
+            </h2>
+            <div className="flex items-center gap-4">
+              <Button
+                onClick={() => navigate("/upload-documents")}
+                className="bg-[#02959F] text-white hover:bg-[#037885] flex items-center gap-2"
+              >
+                <Plus className="h-4 w-4" />
+                Add Details
+              </Button>
+              <Select onValueChange={setFilterType}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Select filter type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="academic">Academic Year Wise</SelectItem>
+                  <SelectItem value="company">Company Wise</SelectItem>
+                  <SelectItem value="package">Package Wise</SelectItem>
+                </SelectContent>
+              </Select>
+
+              {filterType === "academic" && (
+                <Select onValueChange={setAcademicYear}>
+                  <SelectTrigger className="w-[150px]">
+                    <SelectValue placeholder="Select year" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="2024-25">2024-25</SelectItem>
+                    <SelectItem value="2023-24">2023-24</SelectItem>
+                    <SelectItem value="2022-23">2022-23</SelectItem>
+                  </SelectContent>
+                </Select>
+              )}
+
+              {(filterType === "company" || filterType === "package") && (
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
+                  <Input
+                    placeholder={
+                      filterType === "company" 
+                        ? "Search by company name" 
+                        : "Search by package"
+                    }
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="pl-10 w-[300px]"
+                  />
+                </div>
+              )}
+            </div>
           </div>
 
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Item</TableHead>
-                <TableHead>CAYm1 (2023-24)</TableHead>
-                <TableHead>CAYm2 (2022-23)</TableHead>
-                <TableHead>CAYm3 (2021-22)</TableHead>
+                <TableHead>Student Name</TableHead>
+                <TableHead>Enrollment Number</TableHead>
+                <TableHead>Company Name</TableHead>
+                <TableHead>Package (LPA)</TableHead>
+                <TableHead>Placement Date</TableHead>
+                <TableHead>Offer Letter</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow>
-                <TableCell>Total No of Final Year Students(N)</TableCell>
-                <TableCell>49</TableCell>
-                <TableCell>48</TableCell>
-                <TableCell>42</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>No of students placed in companies or government sector(X)</TableCell>
-                <TableCell>37</TableCell>
-                <TableCell>31</TableCell>
-                <TableCell>34</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>No of students admitted to higher studies with valid qualifying scores (GATE or equivalent State or National Level tests, GRE, GMAT etc.) (Y)</TableCell>
-                <TableCell>06</TableCell>
-                <TableCell>08</TableCell>
-                <TableCell>2</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>No of students turned entrepreneur in engineering/technology (Z)</TableCell>
-                <TableCell>03</TableCell>
-                <TableCell>07</TableCell>
-                <TableCell>5</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Placement Index [ (X+Y+Z)/N] :</TableCell>
-                <TableCell>46</TableCell>
-                <TableCell>46</TableCell>
-                <TableCell>41</TableCell>
-              </TableRow>
+              {/* Table will be populated with actual data when integrated with backend */}
             </TableBody>
           </Table>
-          <div className="mt-4 text-right text-lg font-semibold text-[#02959F]">
-            Average Placement [ (P1 + P2 + P3)/3]: 0.96
-          </div>
-        </Card>
+        </div>
       </div>
     </div>
   );

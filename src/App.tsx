@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -23,6 +22,7 @@ import AcademicPerformance from "./pages/AcademicPerformance";
 import AcademicPerformanceUpload from "./pages/AcademicPerformanceUpload";
 import PlacementDetails from "./pages/PlacementDetails";
 import PlacementDetailsUpload from "./pages/PlacementDetailsUpload";
+import NotFound from './NotFound';
 
 const queryClient = new QueryClient();
 
